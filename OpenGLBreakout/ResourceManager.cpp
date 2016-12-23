@@ -6,6 +6,8 @@
 //  Copyright © 2016年 梅宇宸. All rights reserved.
 //
 
+#include "Texture2D.hpp"
+#include "Shader.hpp"
 #include "ResourceManager.hpp"
 
 #include <iostream>
@@ -15,28 +17,25 @@
 #include <SOIL.h>
 
 // Instantiate static variables
-std::map<std::string, Texture2D>    ResourceManager::Textures;
-std::map<std::string, Shader>       ResourceManager::Shaders;
+std::map<std::string, Texture2D> ResourceManager::Textures;
+std::map<std::string, Shader> ResourceManager::Shaders;
 
-
-Shader ResourceManager::LoadShader (const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile, std::string name)
+void ResourceManager::LoadShader (const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile, std::string name)
 {
     Shaders[name] = LoadShaderFromFile (vShaderFile, fShaderFile, gShaderFile);
-    return Shaders[name];
 }
 
-Shader ResourceManager::GetShader(std::string name)
+Shader& ResourceManager::GetShader(std::string name)
 {
     return Shaders[name];
 }
 
-Texture2D ResourceManager::LoadTexture (const GLchar *file, GLboolean alpha, std::string name)
+void ResourceManager::LoadTexture (const GLchar *file, GLboolean alpha, std::string name)
 {
-    Textures[name] = LoadTextureFromFile(file, alpha);
-    return Textures[name];
+    Textures[name] = LoadTextureFromFile (file, alpha);
 }
 
-Texture2D ResourceManager::GetTexture(std::string name)
+Texture2D& ResourceManager::GetTexture(std::string name)
 {
     return Textures[name];
 }
@@ -51,7 +50,7 @@ void ResourceManager::Clear ()
         glDeleteTextures(1, &iter.second.ID);
 }
 
-Shader ResourceManager::LoadShaderFromFile (const GLchar *vShaderFile, const GLchar *fShaderFile, const GLchar *gShaderFile)
+Shader ResourceManager::LoadShaderFromFile (const GLchar* vShaderFile, const GLchar* fShaderFile, const GLchar*gShaderFile)
 {
     // 1. Retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -95,7 +94,7 @@ Shader ResourceManager::LoadShaderFromFile (const GLchar *vShaderFile, const GLc
     return shader;
 }
 
-Texture2D ResourceManager::LoadTextureFromFile (const GLchar *file, GLboolean alpha)
+Texture2D ResourceManager::LoadTextureFromFile (const GLchar* file, GLboolean alpha)
 {
     // Create Texture object
     Texture2D texture;
@@ -107,8 +106,13 @@ Texture2D ResourceManager::LoadTextureFromFile (const GLchar *file, GLboolean al
     // Load image
     int width, height;
     unsigned char* image = SOIL_load_image(file, &width, &height, 0, texture.Image_Format == GL_RGBA ? SOIL_LOAD_RGBA : SOIL_LOAD_RGB);
+    
+    if (image == nullptr)
+    {
+        std::cout << "Load texture " << file << "failed!" << std::endl;
+    }
     // Now generate texture
-    texture.Generate(width, height, image);
+    texture.Generate (width, height, image);
     // And finally free image data
     SOIL_free_image_data(image);
     return texture;

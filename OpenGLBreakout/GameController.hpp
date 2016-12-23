@@ -12,6 +12,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+class SpriteRenderer;
+
 enum GameState
 {
     GAME_ACTIVE,
@@ -25,6 +27,8 @@ public:
     GameState mState;
     GLboolean mKeys[1024];
     GLuint mWidth, mHeight;
+    
+    SpriteRenderer* Renderer;
     
     GameController (GLuint width, GLuint height);
     ~GameController ();
