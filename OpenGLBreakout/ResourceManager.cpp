@@ -109,7 +109,7 @@ Texture2D ResourceManager::LoadTextureFromFile (const GLchar* file, GLboolean al
     
     if (image == nullptr)
     {
-        std::cout << "Load texture " << file << "failed!" << std::endl;
+        std::cout << "ERROR::Load Texture2D " << file << " Failed!" << std::endl;
     }
     // Now generate texture
     texture.Generate (width, height, image);

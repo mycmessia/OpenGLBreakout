@@ -43,7 +43,20 @@ void GameController::Init ()
     Renderer = new SpriteRenderer (ResourceManager::GetShader("sprite"));
     
     // Load textures
+    ResourceManager::LoadTexture (TEXTURE_FULL_DIR"background.jpg", GL_FALSE, "background");
     ResourceManager::LoadTexture (TEXTURE_FULL_DIR"monsterface.png", GL_TRUE, "face");
+    ResourceManager::LoadTexture (TEXTURE_FULL_DIR"block.png", GL_FALSE, "block");
+    ResourceManager::LoadTexture (TEXTURE_FULL_DIR"block_solid.png", GL_FALSE, "block_solid");
+    // Load levels
+    GameLevel one; one.Load (LEVEL_FULL_DIR"one.lvl", this->mWidth, this->mHeight * 0.5);
+    GameLevel two; two.Load (LEVEL_FULL_DIR"two.lvl", this->mWidth, this->mHeight * 0.5);
+    GameLevel three; three.Load (LEVEL_FULL_DIR"three.lvl", this->mWidth, this->mHeight * 0.5);
+    GameLevel four; four.Load (LEVEL_FULL_DIR"four.lvl", this->mWidth, this->mHeight * 0.5);
+    this->Levels.push_back (one);
+    this->Levels.push_back (two);
+    this->Levels.push_back (three);
+    this->Levels.push_back (four);
+    this->Level = 1;
 }
 
 void GameController::Update (GLfloat dt)
@@ -59,6 +72,13 @@ void GameController::ProcessInput (GLfloat dt)
 
 void GameController::Render ()
 {
-    Renderer->DrawSprite (ResourceManager::GetTexture("face"),
-                          glm::vec2(200, 200), glm::vec2(100, 100), 45.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+    if(this->mState == GAME_ACTIVE)
+    {
+        // Draw background
+        Renderer->DrawSprite(ResourceManager::GetTexture("background"),
+                             glm::vec2(0, 0), glm::vec2(this->mWidth, this->mHeight), 0.0f);
+        
+        // Draw level
+        this->Levels[this->Level].Draw(*Renderer);
+    }
 }

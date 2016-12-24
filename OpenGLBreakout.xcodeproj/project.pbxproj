@@ -17,6 +17,8 @@
 		095255C71E0D752300A4229B /* Texture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255C51E0D752300A4229B /* Texture2D.cpp */; };
 		095255CA1E0D787A00A4229B /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255C81E0D787A00A4229B /* ResourceManager.cpp */; };
 		095255D11E0D814A00A4229B /* SpriteRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255CF1E0D814A00A4229B /* SpriteRenderer.cpp */; };
+		095255D41E0EA46200A4229B /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255D21E0EA46200A4229B /* GameObject.cpp */; };
+		095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255D51E0EA70000A4229B /* GameLevel.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,6 +52,17 @@
 		095255CE1E0D80EE00A4229B /* sprite.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = sprite.vs; sourceTree = "<group>"; };
 		095255CF1E0D814A00A4229B /* SpriteRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteRenderer.cpp; sourceTree = "<group>"; };
 		095255D01E0D814A00A4229B /* SpriteRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SpriteRenderer.hpp; sourceTree = "<group>"; };
+		095255D21E0EA46200A4229B /* GameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
+		095255D31E0EA46200A4229B /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
+		095255D51E0EA70000A4229B /* GameLevel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLevel.cpp; sourceTree = "<group>"; };
+		095255D61E0EA70000A4229B /* GameLevel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameLevel.hpp; sourceTree = "<group>"; };
+		095255D91E0EABED00A4229B /* four.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = four.lvl; sourceTree = "<group>"; };
+		095255DA1E0EABED00A4229B /* one.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = one.lvl; sourceTree = "<group>"; };
+		095255DB1E0EABED00A4229B /* three.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = three.lvl; sourceTree = "<group>"; };
+		095255DC1E0EABED00A4229B /* two.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = two.lvl; sourceTree = "<group>"; };
+		095255DE1E0EAC0300A4229B /* monsterface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterface.png; sourceTree = "<group>"; };
+		095255E01E0EAC1400A4229B /* block_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_solid.png; sourceTree = "<group>"; };
+		095255E11E0EAC1400A4229B /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +100,8 @@
 		095255AB1E0D6B8F00A4229B /* OpenGLBreakout */ = {
 			isa = PBXGroup;
 			children = (
+				095255DD1E0EABF100A4229B /* Textures */,
+				095255D81E0EAA1C00A4229B /* Levels */,
 				095255CC1E0D803900A4229B /* Shaders */,
 				095255CB1E0D802900A4229B /* Engines */,
 				095255AC1E0D6B8F00A4229B /* main.cpp */,
@@ -118,6 +133,10 @@
 				095255C91E0D787A00A4229B /* ResourceManager.hpp */,
 				095255CF1E0D814A00A4229B /* SpriteRenderer.cpp */,
 				095255D01E0D814A00A4229B /* SpriteRenderer.hpp */,
+				095255D21E0EA46200A4229B /* GameObject.cpp */,
+				095255D31E0EA46200A4229B /* GameObject.hpp */,
+				095255D51E0EA70000A4229B /* GameLevel.cpp */,
+				095255D61E0EA70000A4229B /* GameLevel.hpp */,
 			);
 			name = Engines;
 			sourceTree = "<group>";
@@ -129,6 +148,27 @@
 				095255CE1E0D80EE00A4229B /* sprite.vs */,
 			);
 			name = Shaders;
+			sourceTree = "<group>";
+		};
+		095255D81E0EAA1C00A4229B /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				095255D91E0EABED00A4229B /* four.lvl */,
+				095255DA1E0EABED00A4229B /* one.lvl */,
+				095255DB1E0EABED00A4229B /* three.lvl */,
+				095255DC1E0EABED00A4229B /* two.lvl */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		095255DD1E0EABF100A4229B /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				095255E01E0EAC1400A4229B /* block_solid.png */,
+				095255E11E0EAC1400A4229B /* block.png */,
+				095255DE1E0EAC0300A4229B /* monsterface.png */,
+			);
+			name = Textures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,12 +227,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */,
 				095255CA1E0D787A00A4229B /* ResourceManager.cpp in Sources */,
 				095255AD1E0D6B8F00A4229B /* main.cpp in Sources */,
 				095255C71E0D752300A4229B /* Texture2D.cpp in Sources */,
 				095255D11E0D814A00A4229B /* SpriteRenderer.cpp in Sources */,
 				095255C11E0D6FA000A4229B /* Shader.cpp in Sources */,
 				095255B51E0D6C8900A4229B /* GameController.cpp in Sources */,
+				095255D41E0EA46200A4229B /* GameObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

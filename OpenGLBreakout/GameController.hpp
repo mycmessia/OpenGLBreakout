@@ -12,6 +12,10 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <vector>
+
+#include "GameLevel.hpp"
+
 class SpriteRenderer;
 
 enum GameState
@@ -29,6 +33,9 @@ public:
     GLuint mWidth, mHeight;
     
     SpriteRenderer* Renderer;
+    
+    std::vector<GameLevel> Levels;
+    GLuint                 Level;
     
     GameController (GLuint width, GLuint height);
     ~GameController ();
