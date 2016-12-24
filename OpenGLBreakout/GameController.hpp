@@ -15,6 +15,7 @@
 #include <vector>
 
 #include "GameLevel.hpp"
+#include "Ball.hpp"
 
 class SpriteRenderer;
 
@@ -23,6 +24,15 @@ enum GameState
     GAME_ACTIVE,
     GAME_MENU,
     GAME_WIN
+};
+
+class CollisionPairs
+{
+public:
+    CollisionPairs (Ball& gameObj1, GameObject& gameObj2) : ball (gameObj1), brick (gameObj2) {}
+    
+    Ball& ball;
+    GameObject& brick;
 };
 
 class GameController
@@ -45,6 +55,11 @@ public:
     void ProcessInput (GLfloat dt);
     void Update (GLfloat dt);
     void Render ();
+    
+    std::vector<CollisionPairs> cpVector;
+    void BroadPhaseCollisionDetect ();
+    GLboolean NarrowPhaseCollisionDetect (Ball& one, GameObject& two);
+    void DetectCollision ();
 };
 
 #endif /* GameController_hpp */

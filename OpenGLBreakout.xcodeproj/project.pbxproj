@@ -19,6 +19,7 @@
 		095255D11E0D814A00A4229B /* SpriteRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255CF1E0D814A00A4229B /* SpriteRenderer.cpp */; };
 		095255D41E0EA46200A4229B /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255D21E0EA46200A4229B /* GameObject.cpp */; };
 		095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255D51E0EA70000A4229B /* GameLevel.cpp */; };
+		095255E41E0F1C2800A4229B /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E21E0F1C2800A4229B /* Ball.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -63,6 +64,8 @@
 		095255DE1E0EAC0300A4229B /* monsterface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterface.png; sourceTree = "<group>"; };
 		095255E01E0EAC1400A4229B /* block_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_solid.png; sourceTree = "<group>"; };
 		095255E11E0EAC1400A4229B /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
+		095255E21E0F1C2800A4229B /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
+		095255E31E0F1C2800A4229B /* Ball.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				095255CC1E0D803900A4229B /* Shaders */,
 				095255CB1E0D802900A4229B /* Engines */,
 				095255AC1E0D6B8F00A4229B /* main.cpp */,
+				095255E21E0F1C2800A4229B /* Ball.cpp */,
+				095255E31E0F1C2800A4229B /* Ball.hpp */,
 			);
 			path = OpenGLBreakout;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095255E41E0F1C2800A4229B /* Ball.cpp in Sources */,
 				095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */,
 				095255CA1E0D787A00A4229B /* ResourceManager.cpp in Sources */,
 				095255AD1E0D6B8F00A4229B /* main.cpp in Sources */,
