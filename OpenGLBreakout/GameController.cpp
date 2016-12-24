@@ -40,6 +40,17 @@ void GameController::Init ()
     ResourceManager::LoadShader (SHADER_FULL_DIR"sprite.vs", SHADER_FULL_DIR"sprite.frag", nullptr, "sprite");
     
     // Configure shaders
+    // The first four arguments specify in order the left, right, bottom and top part of the projection frustum.
+    // This projection matrix transforms all x coordinates between 0 and 800 to -1 and 1 and all y coordinates between 0 and 600 to -1 and 1.
+    // ---------------------------------
+    // |(0, 0)              (mWidth, 0)|
+    // |                               |
+    // |                               | ---\  (-1, -1)  (1, -1)
+    // |                               | ---/  (-1, 1)   (1, 1)
+    // |                               |       Normalized Device Coordinates
+    // |                               |
+    // |(0, mHeight)  (mWidth, mHeight)|
+    // ---------------------------------
     glm::mat4 projection = glm::ortho (0.0f, static_cast<GLfloat> (this->mWidth),
                                        static_cast<GLfloat> (this->mHeight), 0.0f, -1.0f, 1.0f);
     
