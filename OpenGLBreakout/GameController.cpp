@@ -24,7 +24,7 @@ const GLfloat PLAYER_VELOCITY (500.0f);
 GameObject* player;
 
 // Initial velocity of the Ball
-const glm::vec2 INITIAL_BALL_VELOCITY(-100.0f, -350.0f);
+const glm::vec2 INITIAL_BALL_VELOCITY (100.0f, -350.0f);
 
 // Radius of the ball object
 const GLfloat BALL_RADIUS = 12.5f;
@@ -280,7 +280,7 @@ void GameController::DetectCollision ()
         // Then move accordingly
         GLfloat strength = 2.0f;
         glm::vec2 oldVelocity = ball->Velocity;
-        ball->Velocity.x = -INITIAL_BALL_VELOCITY.x * percentage * strength;
+        ball->Velocity.x = INITIAL_BALL_VELOCITY.x * percentage * strength;
         
         //ball->Velocity.y = -ball->Velocity.y;
         ball->Velocity.y = -1 * std::abs (ball->Velocity.y);
