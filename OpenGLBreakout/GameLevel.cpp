@@ -40,6 +40,7 @@ void GameLevel::Load (const GLchar* file, GLuint levelWidth, GLuint levelHeight)
     else
     {
         std::cout << "ERROR:: Load Game Level " << file << " Failed!" << std::endl;
+        assert (false);
     }
 }
 

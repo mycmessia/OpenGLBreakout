@@ -26,6 +26,15 @@ enum GameState
     GAME_WIN
 };
 
+enum Direction {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+};
+
+typedef std::tuple<GLboolean, Direction, glm::vec2, glm::vec2> Collision;
+
 class CollisionPairs
 {
 public:
@@ -57,9 +66,13 @@ public:
     void Render ();
     
     std::vector<CollisionPairs> cpVector;
+    Direction VectorDirection (glm::vec2 target);
     void BroadPhaseCollisionDetect ();
-    GLboolean NarrowPhaseCollisionDetect (Ball& one, GameObject& two);
+    Collision NarrowPhaseCollisionDetect (Ball& one, GameObject& two);
     void DetectCollision ();
+    
+    void ResetLevel ();
+    void ResetPlayer ();
 };
 
 #endif /* GameController_hpp */
