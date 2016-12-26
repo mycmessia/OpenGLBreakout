@@ -21,13 +21,10 @@ void ParticleGenerator::init ()
     GLuint VBO;
     GLfloat particle_quad[] = {
         // Pos      // TexCoord
+        0.0f, 0.0f, 0.0f, 0.0f,
         0.0f, 1.0f, 0.0f, 1.0f,
         1.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 0.0f,
-        
-        0.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 0.0f
+        1.0f, 1.0f, 1.0f, 1.0f
     };
     glGenVertexArrays (1, &this->VAO);
     glGenBuffers (1, &VBO);
@@ -83,7 +80,7 @@ void ParticleGenerator::Draw ()
             this->shader.SetVector4f ("color", particle.Color);
             this->texture.Bind ();
             glBindVertexArray (this->VAO);
-            glDrawArrays (GL_TRIANGLES, 0, 6);
+            glDrawArrays (GL_TRIANGLE_STRIP, 0, 4);
             glBindVertexArray (0);
         }
     }

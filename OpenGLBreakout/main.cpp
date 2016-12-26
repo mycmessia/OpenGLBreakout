@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     // This step is a must for retina maybe
     glfwGetFramebufferSize (window, &width, &height);
     glViewport (0, 0, width, height);
-    glEnable (GL_CULL_FACE);
+//    glEnable (GL_CULL_FACE); No culling to draw use TRIANGLE_STRIP
     glEnable (GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     

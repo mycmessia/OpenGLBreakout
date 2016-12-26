@@ -43,7 +43,7 @@ void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec
     texture.Bind ();
     
     glBindVertexArray (this->quadVAO);
-    glDrawArrays (GL_TRIANGLES, 0, 6);
+    glDrawArrays (GL_TRIANGLE_STRIP, 0, 4);
     glBindVertexArray (0);
 }
 
@@ -53,13 +53,10 @@ void SpriteRenderer::initRenderData ()
     GLuint VBO;
     GLfloat vertices[] = {
         // Pos      // Tex
+        0.0f, 0.0f, 0.0f, 0.0f,
         0.0f, 1.0f, 0.0f, 1.0f,
         1.0f, 0.0f, 1.0f, 0.0f,
-        0.0f, 0.0f, 0.0f, 0.0f,
-        
-        0.0f, 1.0f, 0.0f, 1.0f,
-        1.0f, 1.0f, 1.0f, 1.0f,
-        1.0f, 0.0f, 1.0f, 0.0f
+        1.0f, 1.0f, 1.0f, 1.0f
     };
     
     glGenVertexArrays(1, &this->quadVAO);
