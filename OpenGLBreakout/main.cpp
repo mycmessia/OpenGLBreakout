@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     // Initialize game
-    Breakout.Init ();
+    Breakout.Init (width, height);
     
     // DeltaTime variables
     GLfloat deltaTime = 0.0f;

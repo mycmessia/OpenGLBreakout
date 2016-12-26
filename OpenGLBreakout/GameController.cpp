@@ -58,13 +58,23 @@ GameController::~GameController ()
         delete mParticles;
         mParticles = nullptr;
     }
+    
+    if (mEffects)
+    {
+        delete mEffects;
+        mEffects = nullptr;
+    }
 }
 
-void GameController::Init ()
+void GameController::Init (GLuint frameBufferWidth, GLuint frameBufferHeight)
 {
+    mFrameBufferWidth = frameBufferWidth;
+    mFrameBufferHeight = frameBufferHeight;
+    
     // Load shaders
     ResourceManager::LoadShader (SHADER_FULL_DIR"sprite.vs", SHADER_FULL_DIR"sprite.frag", nullptr, "sprite");
     ResourceManager::LoadShader (SHADER_FULL_DIR"particle.vs", SHADER_FULL_DIR"particle.frag", nullptr, "particle");
+    ResourceManager::LoadShader (SHADER_FULL_DIR"post_processing.vs", SHADER_FULL_DIR"post_processing.frag", nullptr, "postprocessing");
     
     // Configure shaders
     // The first four arguments specify in order the left, right, bottom and top part of the projection frustum.
@@ -86,6 +96,8 @@ void GameController::Init ()
     
     ResourceManager::GetShader ("particle").Use ().SetInteger ("sprite", 0);
     ResourceManager::GetShader ("particle").SetMatrix4 ("projection", projection);
+    
+    ResourceManager::GetShader ("postprocessing").SetMatrix4 ("projection", projection);
     
     // Set render-specific controls
     mRenderer = new SpriteRenderer (ResourceManager::GetShader("sprite"));
@@ -122,6 +134,14 @@ void GameController::Init ()
         ResourceManager::GetTexture ("particle"),
         100
     );
+    
+    mEffects = new PostProcessor (
+        ResourceManager::GetShader("postprocessing"), this->mFrameBufferWidth, this->mFrameBufferHeight);
+    
+    ShakeTime = 0.0f;
+    
+//    mEffects->Chaos = true;
+//    mEffects->Confuse = true;
 }
 
 void GameController::Update (GLfloat dt)
@@ -138,6 +158,13 @@ void GameController::Update (GLfloat dt)
     
     // Update particles
     mParticles->Update (dt, *mBall, 2, glm::vec2 (mBall->Radius / 2));
+    
+    if (ShakeTime > 0.0f)
+    {
+        ShakeTime -= dt;
+        if (ShakeTime <= 0.0f)
+            mEffects->Shake = false;
+    }
 }
 
 
@@ -179,12 +206,14 @@ void GameController::Render ()
 {
     if(this->mState == GAME_ACTIVE)
     {
+        mEffects->BeginRender();
+        
         // Draw background
         mRenderer->DrawSprite (ResourceManager::GetTexture ("background"),
                                glm::vec2 (0, 0), glm::vec2 (this->mWidth, this->mHeight), 0.0f);
 //
         // Draw level
-        this->mLevels[this->mLevel].Draw (*mRenderer);
+        mLevels[mLevel].Draw (*mRenderer);
         
         mPlayer->Draw (*mRenderer);
         
@@ -192,6 +221,10 @@ void GameController::Render ()
         mParticles->Draw ();
 
         mBall->Draw (*mRenderer);
+        
+        mEffects->EndRender ();
+        
+        mEffects->Render (glfwGetTime());
     }
 }
 
@@ -269,7 +302,11 @@ void GameController::DetectCollision ()
             {
                 cpVector[i].brick.Destroyed = GL_TRUE;
             }
-            
+            else
+            {   // if block is solid, enable shake effect
+                ShakeTime = 0.05f;
+                mEffects->Shake = true;
+            }
             // Collision resolution
             Direction dir = std::get<1>(collision);
             glm::vec2 diff_vector = std::get<2>(collision);

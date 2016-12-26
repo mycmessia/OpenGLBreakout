@@ -18,6 +18,8 @@
 #include "GameLevel.hpp"
 #include "Ball.hpp"
 
+#include "PostProcessor.hpp"
+
 class SpriteRenderer;
 
 enum GameState
@@ -51,7 +53,7 @@ public:
     GameController (GLuint width, GLuint height);
     ~GameController ();
     
-    void Init ();
+    void Init (GLuint frameBufferWidth, GLuint frameBufferHeight);
     
     void ProcessInput (GLfloat dt);
     void Update (GLfloat dt);
@@ -69,6 +71,7 @@ public:
     GameState mState;
     GLboolean mKeys[1024];
     GLuint mWidth, mHeight;
+    GLuint mFrameBufferWidth, mFrameBufferHeight;
     
     std::vector<GameLevel> mLevels;
     GLuint mLevel;
@@ -77,6 +80,9 @@ public:
     ParticleGenerator* mParticles;
     GameObject* mPlayer;
     Ball* mBall;
+    
+    GLfloat ShakeTime;
+    PostProcessor* mEffects;
 };
 
 #endif /* GameController_hpp */

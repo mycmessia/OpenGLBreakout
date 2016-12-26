@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		094F1AC71E116D9800F5A43C /* PostProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 094F1AC51E116D9800F5A43C /* PostProcessor.cpp */; };
 		095255AD1E0D6B8F00A4229B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255AC1E0D6B8F00A4229B /* main.cpp */; };
 		095255B51E0D6C8900A4229B /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255B31E0D6C8900A4229B /* GameController.cpp */; };
 		095255B71E0D6D5E00A4229B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095255B61E0D6D5E00A4229B /* OpenGL.framework */; };
@@ -36,6 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		094F1AC51E116D9800F5A43C /* PostProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PostProcessor.cpp; sourceTree = "<group>"; };
+		094F1AC61E116D9800F5A43C /* PostProcessor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PostProcessor.hpp; sourceTree = "<group>"; };
+		094F1AC81E11702100F5A43C /* post_processing.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post_processing.frag; sourceTree = "<group>"; };
+		094F1AC91E11702100F5A43C /* post_processing.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = post_processing.vs; sourceTree = "<group>"; };
 		095255A91E0D6B8F00A4229B /* OpenGLBreakout */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenGLBreakout; sourceTree = BUILT_PRODUCTS_DIR; };
 		095255AC1E0D6B8F00A4229B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		095255B31E0D6C8900A4229B /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameController.cpp; sourceTree = "<group>"; };
@@ -149,6 +154,8 @@
 				095255D61E0EA70000A4229B /* GameLevel.hpp */,
 				095255E51E10F22A00A4229B /* Particle.cpp */,
 				095255E61E10F22A00A4229B /* Particle.hpp */,
+				094F1AC51E116D9800F5A43C /* PostProcessor.cpp */,
+				094F1AC61E116D9800F5A43C /* PostProcessor.hpp */,
 			);
 			name = Engines;
 			sourceTree = "<group>";
@@ -156,6 +163,8 @@
 		095255CC1E0D803900A4229B /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				094F1AC81E11702100F5A43C /* post_processing.frag */,
+				094F1AC91E11702100F5A43C /* post_processing.vs */,
 				095255E81E10F98700A4229B /* particle.frag */,
 				095255E91E10F98700A4229B /* particle.vs */,
 				095255CD1E0D80EE00A4229B /* sprite.frag */,
@@ -251,6 +260,7 @@
 				095255C11E0D6FA000A4229B /* Shader.cpp in Sources */,
 				095255B51E0D6C8900A4229B /* GameController.cpp in Sources */,
 				095255D41E0EA46200A4229B /* GameObject.cpp in Sources */,
+				094F1AC71E116D9800F5A43C /* PostProcessor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
