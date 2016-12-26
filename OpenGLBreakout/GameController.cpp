@@ -104,7 +104,7 @@ void GameController::Init (GLuint frameBufferWidth, GLuint frameBufferHeight)
     
     // Load textures
     ResourceManager::LoadTexture (TEXTURE_FULL_DIR"background.jpg", GL_FALSE, "background");
-    ResourceManager::LoadTexture (TEXTURE_FULL_DIR"monsterface.png", GL_TRUE, "face");
+    ResourceManager::LoadTexture (TEXTURE_FULL_DIR"sheep.png", GL_TRUE, "face");
     ResourceManager::LoadTexture (TEXTURE_FULL_DIR"block.png", GL_FALSE, "block");
     ResourceManager::LoadTexture (TEXTURE_FULL_DIR"block_solid.png", GL_FALSE, "block_solid");
     ResourceManager::LoadTexture (TEXTURE_FULL_DIR"paddle.png", true, "paddle");
