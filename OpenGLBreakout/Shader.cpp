@@ -127,6 +127,7 @@ void Shader::checkCompileErrors (GLuint object, std::string type)
             std::cout << "| ERROR::SHADER: Compile-time error: Type: " << type << "\n"
             << infoLog << "\n -- --------------------------------------------------- -- "
             << std::endl;
+            assert (false);
         }
     }
     else
@@ -138,6 +139,7 @@ void Shader::checkCompileErrors (GLuint object, std::string type)
             std::cout << "| ERROR::Shader: Link-time error: Type: " << type << "\n"
             << infoLog << "\n -- --------------------------------------------------- -- "
             << std::endl;
+            assert (false);
         }
     }
 }

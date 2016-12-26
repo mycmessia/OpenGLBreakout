@@ -14,6 +14,7 @@
 
 #include <vector>
 
+#include "Particle.hpp"
 #include "GameLevel.hpp"
 #include "Ball.hpp"
 
@@ -47,15 +48,6 @@ public:
 class GameController
 {
 public:
-    GameState mState;
-    GLboolean mKeys[1024];
-    GLuint mWidth, mHeight;
-    
-    SpriteRenderer* Renderer;
-    
-    std::vector<GameLevel> Levels;
-    GLuint                 Level;
-    
     GameController (GLuint width, GLuint height);
     ~GameController ();
     
@@ -73,6 +65,18 @@ public:
     
     void ResetLevel ();
     void ResetPlayer ();
+    
+    GameState mState;
+    GLboolean mKeys[1024];
+    GLuint mWidth, mHeight;
+    
+    std::vector<GameLevel> mLevels;
+    GLuint mLevel;
+    
+    SpriteRenderer* mRenderer;
+    ParticleGenerator* mParticles;
+    GameObject* mPlayer;
+    Ball* mBall;
 };
 
 #endif /* GameController_hpp */

@@ -20,6 +20,7 @@
 		095255D41E0EA46200A4229B /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255D21E0EA46200A4229B /* GameObject.cpp */; };
 		095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255D51E0EA70000A4229B /* GameLevel.cpp */; };
 		095255E41E0F1C2800A4229B /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E21E0F1C2800A4229B /* Ball.cpp */; };
+		095255E71E10F22A00A4229B /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E51E10F22A00A4229B /* Particle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,10 @@
 		095255E11E0EAC1400A4229B /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 		095255E21E0F1C2800A4229B /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
 		095255E31E0F1C2800A4229B /* Ball.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Ball.hpp; sourceTree = "<group>"; };
+		095255E51E10F22A00A4229B /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
+		095255E61E10F22A00A4229B /* Particle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
+		095255E81E10F98700A4229B /* particle.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.frag; sourceTree = "<group>"; };
+		095255E91E10F98700A4229B /* particle.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +147,8 @@
 				095255D31E0EA46200A4229B /* GameObject.hpp */,
 				095255D51E0EA70000A4229B /* GameLevel.cpp */,
 				095255D61E0EA70000A4229B /* GameLevel.hpp */,
+				095255E51E10F22A00A4229B /* Particle.cpp */,
+				095255E61E10F22A00A4229B /* Particle.hpp */,
 			);
 			name = Engines;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 		095255CC1E0D803900A4229B /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
+				095255E81E10F98700A4229B /* particle.frag */,
+				095255E91E10F98700A4229B /* particle.vs */,
 				095255CD1E0D80EE00A4229B /* sprite.frag */,
 				095255CE1E0D80EE00A4229B /* sprite.vs */,
 			);
@@ -233,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				095255E41E0F1C2800A4229B /* Ball.cpp in Sources */,
+				095255E71E10F22A00A4229B /* Particle.cpp in Sources */,
 				095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */,
 				095255CA1E0D787A00A4229B /* ResourceManager.cpp in Sources */,
 				095255AD1E0D6B8F00A4229B /* main.cpp in Sources */,
