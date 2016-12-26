@@ -148,7 +148,7 @@ void GameController::ProcessInput (GLfloat dt)
         GLfloat velocity = PLAYER_VELOCITY * dt;
         
         // Move playerboard
-        if (this->mKeys[GLFW_KEY_A])
+        if (this->mKeys[GLFW_KEY_LEFT])
         {
             if (mPlayer->Position.x >= 0)
             {
@@ -159,7 +159,7 @@ void GameController::ProcessInput (GLfloat dt)
             }
         }
         
-        if (this->mKeys[GLFW_KEY_D])
+        if (this->mKeys[GLFW_KEY_RIGHT])
         {
             if (mPlayer->Position.x <= this->mWidth - mPlayer->Size.x)
             {
