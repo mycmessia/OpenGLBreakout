@@ -25,7 +25,7 @@ const GLfloat PLAYER_VELOCITY (500.0f);
 const glm::vec2 INITIAL_BALL_VELOCITY (100.0f, -350.0f);
 
 // Radius of the ball object
-const GLfloat BALL_RADIUS = 12.5f;
+const GLfloat BALL_RADIUS = 15.0f;
 
 GameController::GameController (GLuint width, GLuint height)
 : mState (GAME_ACTIVE), mKeys (), mWidth (width), mHeight (height)
@@ -127,7 +127,7 @@ void GameController::Init (GLuint frameBufferWidth, GLuint frameBufferHeight)
     
     glm::vec2 ballPos = playerPos + glm::vec2 (PLAYER_SIZE.x / 2 - BALL_RADIUS, -BALL_RADIUS * 2);
     mBall = new Ball (ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY,
-                     ResourceManager::GetTexture ("face"));
+                      ResourceManager::GetTexture ("face"));
     
     mParticles = new ParticleGenerator (
         ResourceManager::GetShader ("particle"),
