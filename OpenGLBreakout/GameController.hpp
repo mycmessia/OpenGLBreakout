@@ -17,8 +17,8 @@
 #include "Particle.hpp"
 #include "GameLevel.hpp"
 #include "Ball.hpp"
-
 #include "PostProcessor.hpp"
+#include "PowerUp.hpp"
 
 class SpriteRenderer;
 
@@ -63,10 +63,15 @@ public:
     Direction VectorDirection (glm::vec2 target);
     void BroadPhaseCollisionDetect ();
     Collision NarrowPhaseCollisionDetect (Ball& one, GameObject& two);
+    GLboolean NarrowPhaseCollisionDetect (GameObject& one, GameObject& two);
     void DetectCollision ();
     
     void ResetLevel ();
     void ResetPlayer ();
+    
+    void SpawnPowerUps (GameObject &block);
+    void UpdatePowerUps (GLfloat dt);
+    void ActivatePowerUp (PowerUp &powerUp);
     
     GameState mState;
     GLboolean mKeys[1024];
@@ -83,6 +88,8 @@ public:
     
     GLfloat ShakeTime;
     PostProcessor* mEffects;
+    
+    std::vector<PowerUp> PowerUps;
 };
 
 #endif /* GameController_hpp */

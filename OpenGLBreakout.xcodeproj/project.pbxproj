@@ -22,6 +22,7 @@
 		095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255D51E0EA70000A4229B /* GameLevel.cpp */; };
 		095255E41E0F1C2800A4229B /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E21E0F1C2800A4229B /* Ball.cpp */; };
 		095255E71E10F22A00A4229B /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E51E10F22A00A4229B /* Particle.cpp */; };
+		09E936B31E11CCD300E0C053 /* PowerUp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E936B11E11CCD300E0C053 /* PowerUp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +77,8 @@
 		095255E61E10F22A00A4229B /* Particle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Particle.hpp; sourceTree = "<group>"; };
 		095255E81E10F98700A4229B /* particle.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.frag; sourceTree = "<group>"; };
 		095255E91E10F98700A4229B /* particle.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vs; sourceTree = "<group>"; };
+		09E936B11E11CCD300E0C053 /* PowerUp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PowerUp.cpp; sourceTree = "<group>"; };
+		09E936B21E11CCD300E0C053 /* PowerUp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PowerUp.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				095255AC1E0D6B8F00A4229B /* main.cpp */,
 				095255E21E0F1C2800A4229B /* Ball.cpp */,
 				095255E31E0F1C2800A4229B /* Ball.hpp */,
+				09E936B11E11CCD300E0C053 /* PowerUp.cpp */,
+				09E936B21E11CCD300E0C053 /* PowerUp.hpp */,
 			);
 			path = OpenGLBreakout;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				095255C11E0D6FA000A4229B /* Shader.cpp in Sources */,
 				095255B51E0D6C8900A4229B /* GameController.cpp in Sources */,
 				095255D41E0EA46200A4229B /* GameObject.cpp in Sources */,
+				09E936B31E11CCD300E0C053 /* PowerUp.cpp in Sources */,
 				094F1AC71E116D9800F5A43C /* PostProcessor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
