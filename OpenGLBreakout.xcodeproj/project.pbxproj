@@ -84,7 +84,7 @@
 		09E936B61E12848700E0C053 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = /usr/local/lib/libirrklang.dylib; sourceTree = "<absolute>"; };
 		09E936D71E12A0AE00E0C053 /* TextRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderer.cpp; sourceTree = "<group>"; };
 		09E936D81E12A0AE00E0C053 /* TextRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextRenderer.hpp; sourceTree = "<group>"; };
-		09E936DA1E12A1B400E0C053 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../usr/local/Cellar/freetype/2.7/lib/libfreetype.6.dylib; sourceTree = "<group>"; };
+		09E936DA1E12A1B400E0C053 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = /usr/local/Cellar/freetype/2.7/lib/libfreetype.6.dylib; sourceTree = "<absolute>"; };
 		09E936DD1E12A3E200E0C053 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +108,6 @@
 		095255A01E0D6B8F00A4229B = {
 			isa = PBXGroup;
 			children = (
-				09E936DA1E12A1B400E0C053 /* libfreetype.6.dylib */,
 				095255BE1E0D6D8700A4229B /* Libs */,
 				095255AB1E0D6B8F00A4229B /* OpenGLBreakout */,
 				095255AA1E0D6B8F00A4229B /* Products */,
@@ -143,6 +142,7 @@
 		095255BE1E0D6D8700A4229B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				09E936DA1E12A1B400E0C053 /* libfreetype.6.dylib */,
 				09E936B61E12848700E0C053 /* libirrklang.dylib */,
 				095255BC1E0D6D8000A4229B /* libglfw3.3.2.dylib */,
 				095255BA1E0D6D7700A4229B /* libGLEW.2.0.0.dylib */,
