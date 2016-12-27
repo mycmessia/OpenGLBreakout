@@ -292,7 +292,7 @@ void GameController::Render ()
                 powerUp.Draw (*mRenderer);
         
         std::stringstream ss; ss << this->mLives;
-        mTextRenderer->RenderText ("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
+        mTextRenderer->RenderText ("Lives: " + ss.str(), 5.0f, 5.0f, 1.0f);
         
         mEffects->EndRender ();
         
@@ -301,16 +301,18 @@ void GameController::Render ()
     
     if (this->mState == GAME_MENU)
     {
-        mTextRenderer->RenderText ("Press ENTER to start", mWidth / 2, mHeight / 2, 1.0f);
-        mTextRenderer->RenderText ("Press W or S to select level", mWidth / 2, mHeight / 2 + 20.0f, 0.75f);
+        mTextRenderer->RenderText ("Press ENTER to start", mWidth / 2 - 110, mHeight / 2 + 4, 1.0f);
+        mTextRenderer->RenderText ("Press W or S to select level", mWidth / 2 - 105, mHeight / 2 + 30.0f, 0.75f);
+        std::stringstream ss; ss << this->mLevel + 1;
+        mTextRenderer->RenderText ("Level: " + ss.str(), 5.0f, 35.0f, 1.0f);
     }
     else if (this->mState == GAME_WIN)
     {
         mTextRenderer->RenderText (
-                         "You WON!!!", 320.0, mHeight / 2 - 20.0, 1.0, glm::vec3(0.0, 1.0, 0.0)
+            "You WON!!!", 320.0, mHeight / 2 - 20.0, 1.0, glm::vec3(0.0, 1.0, 0.0)
         );
-        mTextRenderer->RenderText(
-                         "Press ENTER to retry or ESC to quit", 130.0, mHeight / 2, 1.0, glm::vec3(1.0, 1.0, 0.0)
+        mTextRenderer->RenderText (
+            "Press ENTER to retry or ESC to quit", 190.0, mHeight / 2 + 10, 1.0, glm::vec3(1.0, 1.0, 0.0)
         );
     }
 }
