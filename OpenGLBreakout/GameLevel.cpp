@@ -18,6 +18,7 @@ void GameLevel::Load (const GLchar* file, GLuint levelWidth, GLuint levelHeight)
 {
     // Clear old data
     this->Bricks.clear ();
+    
     // Load from file
     GLuint tileCode;
     GameLevel level;
@@ -97,7 +98,8 @@ void GameLevel::init (std::vector<std::vector<GLuint>> tileData, GLuint levelWid
                 
                 glm::vec2 pos(unit_width * x, unit_height * y);
                 glm::vec2 size(unit_width, unit_height);
-                this->Bricks.push_back(GameObject(pos, size, ResourceManager::GetTexture("block"), color));
+                GameObject obj (pos, size, ResourceManager::GetTexture("block"), color);
+                this->Bricks.push_back(obj);
             }
         }
     }

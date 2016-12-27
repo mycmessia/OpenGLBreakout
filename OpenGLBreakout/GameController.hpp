@@ -19,6 +19,7 @@
 #include "Ball.hpp"
 #include "PostProcessor.hpp"
 #include "PowerUp.hpp"
+#include "TextRenderer.hpp"
 
 #include <irrKlang/irrKlang.h>
 
@@ -80,6 +81,7 @@ public:
     void ActivatePowerUp (PowerUp &powerUp);
     
     GameState mState;
+    GLboolean mKeysProcessed[1024];
     GLboolean mKeys[1024];
     GLuint mWidth, mHeight;
     GLuint mFrameBufferWidth, mFrameBufferHeight;
@@ -98,6 +100,10 @@ public:
     std::vector<PowerUp> PowerUps;
     
     static ISoundEngine* SoundEngine;
+    
+    TextRenderer* mTextRenderer;
+    
+    GLuint mLives;
 };
 
 #endif /* GameController_hpp */

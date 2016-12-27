@@ -6,6 +6,7 @@
 //  Copyright © 2016年 梅宇宸. All rights reserved.
 //
 
+#include <sstream>
 #include <iostream>
 
 #include "Texture2D.hpp"
@@ -70,6 +71,9 @@ GameController::~GameController ()
 
 void GameController::Init (GLuint frameBufferWidth, GLuint frameBufferHeight)
 {
+    mTextRenderer = new TextRenderer (this->mWidth, this->mHeight);
+    mTextRenderer->Load (FONT_FULL_DIR"arial.ttf", 24);
+    
     mFrameBufferWidth = frameBufferWidth;
     mFrameBufferHeight = frameBufferHeight;
     
@@ -129,7 +133,7 @@ void GameController::Init (GLuint frameBufferWidth, GLuint frameBufferHeight)
     this->mLevels.push_back (two);
     this->mLevels.push_back (three);
     this->mLevels.push_back (four);
-    this->mLevel = 1;
+    this->mLevel = 0;
     
     glm::vec2 playerPos = glm::vec2 (this->mWidth / 2 - PLAYER_SIZE.x / 2,
                                      this->mHeight - PLAYER_SIZE.y);
@@ -154,6 +158,8 @@ void GameController::Init (GLuint frameBufferWidth, GLuint frameBufferHeight)
 //    mEffects->Confuse = true;
     
     SoundEngine->play2D (SOUND_FULL_DIR"breakout.mp3", GL_TRUE);
+    
+    mLives = 3;
 }
 
 void GameController::Update (GLfloat dt)
@@ -179,15 +185,49 @@ void GameController::Update (GLfloat dt)
     
     if (mBall->Position.y >= this->mHeight) // Did ball reach bottom edge?
     {
+        --this->mLives;
+        // Did the player lose all his lives? : Game over
+        if (this->mLives == 0)
+        {
+            this->ResetLevel ();
+            this->mState = GAME_MENU;
+        }
+        this->ResetPlayer();
+    }
+    
+    if (this->mState == GAME_ACTIVE && this->mLevels[this->mLevel].IsCompleted())
+    {
         this->ResetLevel ();
         this->ResetPlayer ();
+        this->mState = GAME_WIN;
     }
 }
 
 
 void GameController::ProcessInput (GLfloat dt)
 {
-    if (this->mState == GAME_ACTIVE)
+    if (this->mState == GAME_MENU)
+    {
+        if (this->mKeys[GLFW_KEY_ENTER] && !this->mKeysProcessed[GLFW_KEY_ENTER])
+        {
+            this->mState = GAME_ACTIVE;
+            this->mKeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
+        }
+        if (this->mKeys[GLFW_KEY_W] && !this->mKeysProcessed[GLFW_KEY_W])
+        {
+            this->mLevel = (this->mLevel + 1) % 4;
+            this->mKeysProcessed[GLFW_KEY_W] = GL_TRUE;
+        }
+        if (this->mKeys[GLFW_KEY_S] && !this->mKeysProcessed[GLFW_KEY_S])
+        {
+            if (this->mLevel > 0)
+                --this->mLevel;
+            else
+                this->mLevel = 3;
+            this->mKeysProcessed[GLFW_KEY_S] = GL_TRUE;
+        }
+    }
+    else if (this->mState == GAME_ACTIVE)
     {
         GLfloat velocity = PLAYER_VELOCITY * dt;
         
@@ -217,11 +257,19 @@ void GameController::ProcessInput (GLfloat dt)
         if (this->mKeys[GLFW_KEY_SPACE])
             mBall->Stuck = false;
     }
+    else if (this->mState == GAME_WIN)
+    {
+        if (this->mKeys[GLFW_KEY_ENTER])
+        {
+            this->mKeysProcessed[GLFW_KEY_ENTER] = GL_TRUE;
+            this->mState = GAME_MENU;
+        }
+    }
 }
 
 void GameController::Render ()
 {
-    if(this->mState == GAME_ACTIVE)
+    if(this->mState == GAME_ACTIVE || this->mState == GAME_MENU)
     {
         mEffects->BeginRender();
         
@@ -243,9 +291,27 @@ void GameController::Render ()
             if (!powerUp.Destroyed)
                 powerUp.Draw (*mRenderer);
         
+        std::stringstream ss; ss << this->mLives;
+        mTextRenderer->RenderText ("Lives:" + ss.str(), 5.0f, 5.0f, 1.0f);
+        
         mEffects->EndRender ();
         
-        mEffects->Render (glfwGetTime());
+        mEffects->Render (glfwGetTime ());
+    }
+    
+    if (this->mState == GAME_MENU)
+    {
+        mTextRenderer->RenderText ("Press ENTER to start", mWidth / 2, mHeight / 2, 1.0f);
+        mTextRenderer->RenderText ("Press W or S to select level", mWidth / 2, mHeight / 2 + 20.0f, 0.75f);
+    }
+    else if (this->mState == GAME_WIN)
+    {
+        mTextRenderer->RenderText (
+                         "You WON!!!", 320.0, mHeight / 2 - 20.0, 1.0, glm::vec3(0.0, 1.0, 0.0)
+        );
+        mTextRenderer->RenderText(
+                         "Press ENTER to retry or ESC to quit", 130.0, mHeight / 2, 1.0, glm::vec3(1.0, 1.0, 0.0)
+        );
     }
 }
 
@@ -420,14 +486,16 @@ void GameController::DetectCollision ()
 
 void GameController::ResetLevel ()
 {
-    if (this->mLevel == 1)
+    if (this->mLevel == 0)
         this->mLevels[0].Load (LEVEL_FULL_DIR"one.lvl", this->mWidth, this->mHeight * 0.5f);
-    else if (this->mLevel == 2)
+    else if (this->mLevel == 1)
         this->mLevels[1].Load (LEVEL_FULL_DIR"two.lvl", this->mWidth, this->mHeight * 0.5f);
-    else if (this->mLevel == 3)
+    else if (this->mLevel == 2)
         this->mLevels[2].Load (LEVEL_FULL_DIR"three.lvl", this->mWidth, this->mHeight * 0.5f);
-    else if (this->mLevel == 4)
+    else if (this->mLevel == 3)
         this->mLevels[3].Load (LEVEL_FULL_DIR"four.lvl", this->mWidth, this->mHeight * 0.5f);
+    
+    this->mLives = 3;
 }
 
 void GameController::ResetPlayer ()

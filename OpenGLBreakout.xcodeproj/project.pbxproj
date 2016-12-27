@@ -24,6 +24,8 @@
 		095255E71E10F22A00A4229B /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E51E10F22A00A4229B /* Particle.cpp */; };
 		09E936B31E11CCD300E0C053 /* PowerUp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E936B11E11CCD300E0C053 /* PowerUp.cpp */; };
 		09E936B71E12848700E0C053 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E936B61E12848700E0C053 /* libirrklang.dylib */; };
+		09E936D91E12A0AE00E0C053 /* TextRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E936D71E12A0AE00E0C053 /* TextRenderer.cpp */; };
+		09E936DC1E12A1C500E0C053 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E936DA1E12A1B400E0C053 /* libfreetype.6.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,7 +71,6 @@
 		095255DA1E0EABED00A4229B /* one.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = one.lvl; sourceTree = "<group>"; };
 		095255DB1E0EABED00A4229B /* three.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = three.lvl; sourceTree = "<group>"; };
 		095255DC1E0EABED00A4229B /* two.lvl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = two.lvl; sourceTree = "<group>"; };
-		095255DE1E0EAC0300A4229B /* monsterface.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monsterface.png; sourceTree = "<group>"; };
 		095255E01E0EAC1400A4229B /* block_solid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block_solid.png; sourceTree = "<group>"; };
 		095255E11E0EAC1400A4229B /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
 		095255E21E0F1C2800A4229B /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ball.cpp; sourceTree = "<group>"; };
@@ -81,6 +82,10 @@
 		09E936B11E11CCD300E0C053 /* PowerUp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PowerUp.cpp; sourceTree = "<group>"; };
 		09E936B21E11CCD300E0C053 /* PowerUp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PowerUp.hpp; sourceTree = "<group>"; };
 		09E936B61E12848700E0C053 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = /usr/local/lib/libirrklang.dylib; sourceTree = "<absolute>"; };
+		09E936D71E12A0AE00E0C053 /* TextRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextRenderer.cpp; sourceTree = "<group>"; };
+		09E936D81E12A0AE00E0C053 /* TextRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextRenderer.hpp; sourceTree = "<group>"; };
+		09E936DA1E12A1B400E0C053 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../usr/local/Cellar/freetype/2.7/lib/libfreetype.6.dylib; sourceTree = "<group>"; };
+		09E936DD1E12A3E200E0C053 /* arial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E936DC1E12A1C500E0C053 /* libfreetype.6.dylib in Frameworks */,
 				09E936B71E12848700E0C053 /* libirrklang.dylib in Frameworks */,
 				095255BD1E0D6D8000A4229B /* libglfw3.3.2.dylib in Frameworks */,
 				095255BB1E0D6D7700A4229B /* libGLEW.2.0.0.dylib in Frameworks */,
@@ -102,6 +108,7 @@
 		095255A01E0D6B8F00A4229B = {
 			isa = PBXGroup;
 			children = (
+				09E936DA1E12A1B400E0C053 /* libfreetype.6.dylib */,
 				095255BE1E0D6D8700A4229B /* Libs */,
 				095255AB1E0D6B8F00A4229B /* OpenGLBreakout */,
 				095255AA1E0D6B8F00A4229B /* Products */,
@@ -119,6 +126,7 @@
 		095255AB1E0D6B8F00A4229B /* OpenGLBreakout */ = {
 			isa = PBXGroup;
 			children = (
+				09E936D51E129E0800E0C053 /* Fonts */,
 				095255DD1E0EABF100A4229B /* Textures */,
 				095255D81E0EAA1C00A4229B /* Levels */,
 				095255CC1E0D803900A4229B /* Shaders */,
@@ -165,6 +173,8 @@
 				095255E61E10F22A00A4229B /* Particle.hpp */,
 				094F1AC51E116D9800F5A43C /* PostProcessor.cpp */,
 				094F1AC61E116D9800F5A43C /* PostProcessor.hpp */,
+				09E936D71E12A0AE00E0C053 /* TextRenderer.cpp */,
+				09E936D81E12A0AE00E0C053 /* TextRenderer.hpp */,
 			);
 			name = Engines;
 			sourceTree = "<group>";
@@ -198,9 +208,16 @@
 			children = (
 				095255E01E0EAC1400A4229B /* block_solid.png */,
 				095255E11E0EAC1400A4229B /* block.png */,
-				095255DE1E0EAC0300A4229B /* monsterface.png */,
 			);
 			name = Textures;
+			sourceTree = "<group>";
+		};
+		09E936D51E129E0800E0C053 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				09E936DD1E12A3E200E0C053 /* arial.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +281,7 @@
 				095255D71E0EA70000A4229B /* GameLevel.cpp in Sources */,
 				095255CA1E0D787A00A4229B /* ResourceManager.cpp in Sources */,
 				095255AD1E0D6B8F00A4229B /* main.cpp in Sources */,
+				09E936D91E12A0AE00E0C053 /* TextRenderer.cpp in Sources */,
 				095255C71E0D752300A4229B /* Texture2D.cpp in Sources */,
 				095255D11E0D814A00A4229B /* SpriteRenderer.cpp in Sources */,
 				095255C11E0D6FA000A4229B /* Shader.cpp in Sources */,
@@ -364,6 +382,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 					/opt/local/include,
+					/usr/local/include/freetype2,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,6 +390,7 @@
 					/usr/local/Cellar/glew/2.0.0/lib,
 					/usr/local/Cellar/glfw3/3.2.1/lib,
 					/usr/local/lib,
+					/usr/local/Cellar/freetype/2.7/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -382,6 +402,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 					/opt/local/include,
+					/usr/local/include/freetype2,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -389,6 +410,7 @@
 					/usr/local/Cellar/glew/2.0.0/lib,
 					/usr/local/Cellar/glfw3/3.2.1/lib,
 					/usr/local/lib,
+					/usr/local/Cellar/freetype/2.7/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

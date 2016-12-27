@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenGLBreakout/GameController.cpp"
-            timestampString = "504531700.755153"
+            timestampString = "504546807.293387"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "544"
-            endingLineNumber = "544"
-            landmarkName = "GameController::ActivatePowerUp(PowerUp &amp;powerUp)"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "GameController::Update (GLfloat dt)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

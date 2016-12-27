@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     GLfloat lastFrame = 0.0f;
     
     // Start Game within Menu State
-    Breakout.mState = GAME_ACTIVE;
+    Breakout.mState = GAME_MENU;
     
     while (!glfwWindowShouldClose (window))
     {
@@ -93,12 +93,19 @@ void key_callback (GLFWwindow* window, int key, int scancode, int action, int mo
 {
     // When a user presses the escape key, we set the WindowShouldClose property to true, closing the application
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    {
         glfwSetWindowShouldClose (window, GL_TRUE);
+    }
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
+        {
             Breakout.mKeys[key] = GL_TRUE;
+        }
         else if (action == GLFW_RELEASE)
+        {
             Breakout.mKeys[key] = GL_FALSE;
+            Breakout.mKeysProcessed[key] = GL_FALSE;
+        }
     }
 }
