@@ -23,6 +23,7 @@
 		095255E41E0F1C2800A4229B /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E21E0F1C2800A4229B /* Ball.cpp */; };
 		095255E71E10F22A00A4229B /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 095255E51E10F22A00A4229B /* Particle.cpp */; };
 		09E936B31E11CCD300E0C053 /* PowerUp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09E936B11E11CCD300E0C053 /* PowerUp.cpp */; };
+		09E936B71E12848700E0C053 /* libirrklang.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E936B61E12848700E0C053 /* libirrklang.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,6 +80,7 @@
 		095255E91E10F98700A4229B /* particle.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.vs; sourceTree = "<group>"; };
 		09E936B11E11CCD300E0C053 /* PowerUp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PowerUp.cpp; sourceTree = "<group>"; };
 		09E936B21E11CCD300E0C053 /* PowerUp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PowerUp.hpp; sourceTree = "<group>"; };
+		09E936B61E12848700E0C053 /* libirrklang.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libirrklang.dylib; path = /usr/local/lib/libirrklang.dylib; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E936B71E12848700E0C053 /* libirrklang.dylib in Frameworks */,
 				095255BD1E0D6D8000A4229B /* libglfw3.3.2.dylib in Frameworks */,
 				095255BB1E0D6D7700A4229B /* libGLEW.2.0.0.dylib in Frameworks */,
 				095255B91E0D6D6900A4229B /* libSOIL.dylib in Frameworks */,
@@ -132,6 +135,7 @@
 		095255BE1E0D6D8700A4229B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				09E936B61E12848700E0C053 /* libirrklang.dylib */,
 				095255BC1E0D6D8000A4229B /* libglfw3.3.2.dylib */,
 				095255BA1E0D6D7700A4229B /* libGLEW.2.0.0.dylib */,
 				095255B81E0D6D6900A4229B /* libSOIL.dylib */,
@@ -366,6 +370,7 @@
 					/opt/local/lib,
 					/usr/local/Cellar/glew/2.0.0/lib,
 					/usr/local/Cellar/glfw3/3.2.1/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -383,6 +388,7 @@
 					/opt/local/lib,
 					/usr/local/Cellar/glew/2.0.0/lib,
 					/usr/local/Cellar/glfw3/3.2.1/lib,
+					/usr/local/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

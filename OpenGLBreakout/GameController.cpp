@@ -27,6 +27,8 @@ const glm::vec2 INITIAL_BALL_VELOCITY (100.0f, -350.0f);
 // Radius of the ball object
 const GLfloat BALL_RADIUS = 15.0f;
 
+ISoundEngine* GameController::SoundEngine = createIrrKlangDevice ();
+
 GameController::GameController (GLuint width, GLuint height)
 : mState (GAME_ACTIVE), mKeys (), mWidth (width), mHeight (height)
 {
@@ -150,6 +152,8 @@ void GameController::Init (GLuint frameBufferWidth, GLuint frameBufferHeight)
     
 //    mEffects->Chaos = true;
 //    mEffects->Confuse = true;
+    
+    SoundEngine->play2D (SOUND_FULL_DIR"breakout.mp3", GL_TRUE);
 }
 
 void GameController::Update (GLfloat dt)
@@ -331,11 +335,13 @@ void GameController::DetectCollision ()
             {
                 cpVector[i].brick.Destroyed = GL_TRUE;
                 this->SpawnPowerUps (cpVector[i].brick);
+                SoundEngine->play2D (SOUND_FULL_DIR"bleep.mp3", GL_FALSE);
             }
             else
             {   // if block is solid, enable shake effect
                 ShakeTime = 0.05f;
                 mEffects->Shake = true;
+                SoundEngine->play2D (SOUND_FULL_DIR"solid.wav", GL_FALSE);
             }
             // Collision resolution
             Direction dir = std::get<1>(collision);
@@ -406,6 +412,7 @@ void GameController::DetectCollision ()
                 ActivatePowerUp(powerUp);
                 powerUp.Destroyed = GL_TRUE;
                 powerUp.Activated = GL_TRUE;
+                SoundEngine->play2D (SOUND_FULL_DIR"powerup.wav", GL_FALSE);
             }
         }
     }

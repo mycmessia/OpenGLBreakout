@@ -20,7 +20,13 @@
 #include "PostProcessor.hpp"
 #include "PowerUp.hpp"
 
+#include <irrKlang/irrKlang.h>
+
 class SpriteRenderer;
+
+using namespace irrklang;
+
+#define SOUND_FULL_DIR "/Users/meiyuchen/Projects/OpenGLBreakout/OpenGLBreakout/"
 
 enum GameState
 {
@@ -90,6 +96,8 @@ public:
     PostProcessor* mEffects;
     
     std::vector<PowerUp> PowerUps;
+    
+    static ISoundEngine* SoundEngine;
 };
 
 #endif /* GameController_hpp */
