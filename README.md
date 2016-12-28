@@ -11,7 +11,7 @@ The code contains many mechanics which are:<br /><br />
 3. Particles<br /><br />
 4. Different levels<br /><br />
 5. Postprocessing effects<br /><br />
-![](https://github.com/mycmessia/OpenGLBreakout/blob/master/OpenGLBreakout/screenshots/screenshot2.png)
+![](https://github.com/mycmessia/OpenGLBreakout/blob/master/OpenGLBreakout/screenshots/screenshot2.png)<br /><br />
 6. Triangle strips draw which can render a rectangle with four vertices<br /><br />
 7. Mini game engine which contains game loop, rendering, handling user input, audio...<br /><br />
 8. Different powerups, more to be done<br /><br />
