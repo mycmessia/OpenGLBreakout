@@ -308,12 +308,8 @@ void GameController::Render ()
     }
     else if (this->mState == GAME_WIN)
     {
-        mTextRenderer->RenderText (
-            "You WON!!!", 320.0, mHeight / 2 - 20.0, 1.0, glm::vec3(0.0, 1.0, 0.0)
-        );
-        mTextRenderer->RenderText (
-            "Press ENTER to retry or ESC to quit", 190.0, mHeight / 2 + 10, 1.0, glm::vec3(1.0, 1.0, 0.0)
-        );
+        mTextRenderer->RenderText ("You WON!!!", 320.0, mHeight / 2 - 20.0, 1.0);
+        mTextRenderer->RenderText ("Press ENTER to retry or ESC to quit", 190.0, mHeight / 2 + 10, 1.0);
     }
 }
 
@@ -506,6 +502,14 @@ void GameController::ResetPlayer ()
     mPlayer->Size = PLAYER_SIZE;
     mPlayer->Position = glm::vec2 (this->mWidth / 2 - PLAYER_SIZE.x / 2, this->mHeight - PLAYER_SIZE.y);
     mBall->Reset (mPlayer->Position + glm::vec2(PLAYER_SIZE.x / 2 - BALL_RADIUS, -(BALL_RADIUS * 2)), INITIAL_BALL_VELOCITY);
+    
+    for (PowerUp &powerUp : this->PowerUps)
+    {
+        if (powerUp.Activated)
+        {
+            powerUp.Duration = 0.0F;
+        }
+    }
 }
 
 GLboolean IsOtherPowerUpActive (std::vector<PowerUp> &powerUps, std::string type)
@@ -584,17 +588,35 @@ GLboolean ShouldSpawn (GLuint chance)
 void GameController::SpawnPowerUps (GameObject &block)
 {
     if (ShouldSpawn(75)) // 1 in 75 chance
-        this->PowerUps.push_back(PowerUp("speed", glm::vec3(0.5f, 0.5f, 1.0f), 0.0f, block.Position, ResourceManager::GetTexture("powerup_speed")));
+    {
+        this->PowerUps.push_back(
+            PowerUp("speed", DODGER_BLUE, 5.0f, block.Position, ResourceManager::GetTexture("powerup_speed")));
+    }
+    
     if (ShouldSpawn(75))
-        this->PowerUps.push_back(PowerUp("sticky", glm::vec3(1.0f, 0.5f, 1.0f), 20.0f, block.Position, ResourceManager::GetTexture("powerup_sticky")));
+    {
+        this->PowerUps.push_back(PowerUp("sticky", ORANGE_RED, 20.0f, block.Position, ResourceManager::GetTexture("powerup_sticky")));
+    }
+    
     if (ShouldSpawn(75))
-        this->PowerUps.push_back(PowerUp("pass-through", glm::vec3(0.5f, 1.0f, 0.5f), 10.0f, block.Position, ResourceManager::GetTexture("powerup_passthrough")));
+    {
+        this->PowerUps.push_back(PowerUp("pass-through", LAWN_GREEN, 10.0f, block.Position, ResourceManager::GetTexture("powerup_passthrough")));
+    }
+    
     if (ShouldSpawn(75))
-        this->PowerUps.push_back(PowerUp("pad-size-increase", glm::vec3(1.0f, 0.6f, 0.4), 0.0f, block.Position, ResourceManager::GetTexture("powerup_increase")));
+    {
+        this->PowerUps.push_back(PowerUp("pad-size-increase", YELLOW, 0.0f, block.Position, ResourceManager::GetTexture("powerup_increase")));
+    }
+    
     if (ShouldSpawn(15)) // Negative powerups should spawn more often
-        this->PowerUps.push_back(PowerUp("confuse", glm::vec3(1.0f, 0.3f, 0.3f), 15.0f, block.Position, ResourceManager::GetTexture("powerup_confuse")));
+    {
+        this->PowerUps.push_back(PowerUp("confuse", PURPLE, 15.0f, block.Position, ResourceManager::GetTexture("powerup_confuse")));
+    }
+    
     if (ShouldSpawn(15))
-        this->PowerUps.push_back(PowerUp("chaos", glm::vec3(0.9f, 0.25f, 0.25f), 15.0f, block.Position, ResourceManager::GetTexture("powerup_chaos")));
+    {
+        this->PowerUps.push_back(PowerUp("chaos", CHOCOLATE, 15.0f, block.Position, ResourceManager::GetTexture("powerup_chaos")));
+    }
 }
 
 void GameController::ActivatePowerUp(PowerUp &powerUp)
@@ -612,7 +634,7 @@ void GameController::ActivatePowerUp(PowerUp &powerUp)
     else if (powerUp.Type == "pass-through")
     {
         mBall->PassThrough = GL_TRUE;
-        mBall->Color = glm::vec3(1.0f, 0.5f, 0.5f);
+        mBall->Color = LAWN_GREEN;
     }
     else if (powerUp.Type == "pad-size-increase")
     {
